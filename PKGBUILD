@@ -78,6 +78,5 @@ package_lib32-amdgpu-pro-vulkan () {
 	rm -rf "${pkgdir}"/etc/vulkan/
 
 	# lib32 cleanup
-	rm -rf "${pkgdir}"/usr/{bin,lib,include,share} "${pkgdir}/var" "${pkgdir}"/opt/amdgpu-pro/{bin,include,share}
-	rm -rf "${pkgdir}"/opt/amdgpu-pro/lib/xorg/modules/extensions/
+	rm -rf "${pkgdir}"/usr/share/doc 
 }
