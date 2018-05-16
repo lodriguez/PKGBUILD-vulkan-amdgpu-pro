@@ -50,7 +50,6 @@ package_amdgpu-pro-vulkan () {
 	pkgdesc="The AMDGPU Pro Vulkan driver"
 	arch=('x86_64')
 	provides=('vulkan-driver')
-	depends=('amdgpu-pro=17.40.492261-1')
 
 	extract_deb "${srcdir}"/amdgpu-pro-18.20-579836/./vulkan-amdgpu-pro_18.20-579836_amd64.deb
 
@@ -67,7 +66,6 @@ package_lib32-amdgpu-pro-vulkan () {
 	pkgdesc="The AMDGPU Pro Vulkan driver (32bit libraries)"
 	arch=('x86_64')
 	provides=('lib32-vulkan-driver')
-	depends=('amdgpu-pro=17.40.492261-1')
 
 	extract_deb "${srcdir}"/amdgpu-pro-18.20-579836/./vulkan-amdgpu-pro_18.20-579836_i386.deb
 
