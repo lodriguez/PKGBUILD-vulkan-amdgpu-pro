@@ -1,5 +1,5 @@
 # amdgpu-pro-vulkan-installer
-archlinux PKGBUILD to install only vulkan from amdgpu-pro
+archlinux PKGBUILD to install vulkan libs from amdgpu-pro
 
 This PKGBUILD installs amdgpu-pro-vulkan and lib32-amdgpu-pro-vulkan next to RADV
 You can use it with the VK_ICD_FILENAMES environmental variable
