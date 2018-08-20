@@ -4,7 +4,7 @@
 
 pkgbase=amdgpu-pro-vulkan-installer
 pkgname=(amdgpu-pro-vulkan lib32-amdgpu-pro-vulkan)
-pkgver=18.20-606296
+pkgver=18.30_633530
 pkgrel=1
 arch=('x86_64')
 url='http://www.amd.com'
@@ -14,7 +14,8 @@ makedepends=('wget')
 DLAGENTS='https::/usr/bin/wget --referer https://support.amd.com/en-us/kb-articles/Pages/AMDGPU-PRO-Install.aspx -N %u'
 
 source=(https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-${pkgver//_/-}.tar.xz)
-sha256sums=('6a5058e84c378844d7d661906f10907de321e9f59a43b1804ff1244d13c6b765')
+sha256sums=('2fbc37aef0c259855178eb88b0f4914625619d204e8f39cff1aba49e6d6b9d2a')
+
 
 # extracts a debian package
 # $1: deb file to extract
