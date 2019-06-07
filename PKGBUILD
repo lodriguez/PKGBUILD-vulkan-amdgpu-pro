@@ -57,22 +57,3 @@ package_amdgpu-pro-vulkan () {
 	sed -i "s@abi_versions\(.*\)0.9.0\(.*\)@api_version\11.0.61\2@" "${pkgdir}"/usr/share/vulkan/icd.d/amd_icd64.json
 	rm -rf "${pkgdir}"/etc/vulkan/
 }
-
-package_lib32-amdgpu-pro-vulkan () {
-	pkgdesc="The AMDGPU Pro Vulkan driver (32bit libraries)"
-	arch=('x86_64')
-	provides=('lib32-vulkan-driver')
-
-	extract_deb "${srcdir}"/amdgpu-pro-${pkgver//_/-}/./vulkan-amdgpu-pro_${pkgver//_/-}_i386.deb
-
-	move_libdir "${pkgdir}/lib" "usr/lib32"
-
-	# extra_commands:
-	mkdir -p "${pkgdir}"/usr/share/vulkan/icd.d/
-	mv "${pkgdir}"/etc/vulkan/icd.d/amd_icd32.json "${pkgdir}"/usr/share/vulkan/icd.d/
-	sed -i "s@abi_versions\(.*\)0.9.0\(.*\)@api_version\11.0.61\2@" "${pkgdir}"/usr/share/vulkan/icd.d/amd_icd32.json
-	rm -rf "${pkgdir}"/etc/vulkan/
-
-	# lib32 cleanup
-	rm -rf "${pkgdir}"/usr/share/doc 
-}
