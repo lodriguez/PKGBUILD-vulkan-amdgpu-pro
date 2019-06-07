@@ -18,18 +18,14 @@ build() {
   tar -xJf ${startdir}/src/data.tar.xz
 }
 
-package_amdgpu-pro-vulkan () {
-	pkgdesc="The AMDGPU Pro Vulkan driver"
-	arch=('x86_64')
-	provides=('vulkan-driver')
+package() {
+  install -m755 -d "${pkgdir}"/usr/lib
+  install -m755 -d "${pkgdir}"/usr/share/vulkan/icd.d
+  install -m755 -d "${pkgdir}"/usr/share/licenses/vulkan-amdgpu-pro
 
-	extract_deb "${srcdir}"/amdgpu-pro-${pkgver//_/-}/./vulkan-amdgpu-pro_${pkgver//_/-}_amd64.deb
+  install opt/amdgpu-pro/lib/x86_64-linux-gnu/amdvlk64.so "${pkgdir}"/usr/lib/
+  install opt/amdgpu-pro/etc/vulkan/icd.d/amd_icd64.json "${pkgdir}"/usr/share/vulkan/icd.d/
+  install usr/share/doc/vulkan-amdgpu-pro/copyright "${pkgdir}"/usr/share/licenses/vulkan-amdgpu-pro/
 
-	move_libdir "${pkgdir}/lib"
-
-	# extra_commands:
-	mkdir -p "${pkgdir}"/usr/share/vulkan/icd.d/
-	mv "${pkgdir}"/etc/vulkan/icd.d/amd_icd64.json "${pkgdir}"/usr/share/vulkan/icd.d/
-	sed -i "s@abi_versions\(.*\)0.9.0\(.*\)@api_version\11.0.61\2@" "${pkgdir}"/usr/share/vulkan/icd.d/amd_icd64.json
-	rm -rf "${pkgdir}"/etc/vulkan/
+  sed -i "s/\/opt\/amdgpu-pro\/lib\/x86_64-linux-gnu/\/usr\/lib/g" "${pkgdir}"/usr/share/vulkan/icd.d/amd_icd64.json
 }
