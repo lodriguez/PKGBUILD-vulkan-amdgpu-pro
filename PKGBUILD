@@ -5,6 +5,9 @@ pkgrel=1
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
+provides=('vulkan-driver')
+depends=('vulkan-icd-loader')
+conflicts=('amdvlk-git' 'amdvlk-deb' 'amdvlk' 'vulkan-amdgpu-pro' 'amdgpu-pro-vulkan')
 makedepends=('wget')
 
 DLAGENTS='https::/usr/bin/wget --referer https://support.amd.com/en-us/kb-articles/Pages/AMDGPU-PRO-Install.aspx -N %u'
