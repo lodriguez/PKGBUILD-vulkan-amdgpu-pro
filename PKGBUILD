@@ -12,35 +12,10 @@ DLAGENTS='https::/usr/bin/wget --referer https://support.amd.com/en-us/kb-articl
 source=(https://drivers.amd.com/drivers/linux/amdgpu-pro-${pkgver_}.tar.xz)
 sha256sums=('a0bd71417d0c0ddd404be8c86653135c4e0190a54bb8dc62eef231d5275f37bd')
 
-
-# extracts a debian package
-# $1: deb file to extract
-extract_deb() {
-	local tmpdir="$(basename "${1%.deb}")"
-	rm -Rf "$tmpdir"
-	mkdir "$tmpdir"
-	cd "$tmpdir"
-	ar x "$1"
-	tar -C "${pkgdir}" -xf data.tar.xz
-}
-# move ubuntu specific /usr/lib/x86_64-linux-gnu to /usr/lib
-# $1: library dir
-# $2: destination (optional)
-move_libdir() {
-	local libdir="usr/lib"
-	if [ -n "$2" ]; then
-		libdir="$2"
-	fi
-	if [ -d "$1" ]; then
-		if [ -d "${pkgdir}/${libdir}" ]; then
-			cp -ar -t "${pkgdir}/${libdir}/" "$1"/*
-			rm -rf "$1"
-		else
-			mkdir -p "${pkgdir}/${libdir}"
-			mv -t "${pkgdir}/${libdir}/" "$1"/*
-			rmdir "$1"
-		fi
-	fi
+build() {
+  cd $srcdir
+  ar -x ${startdir}/src/amdgpu-pro-${pkgver_}/vulkan-amdgpu-pro_${pkgver//_/-}_amd64.deb
+  tar -xJf ${startdir}/src/data.tar.xz
 }
 
 package_amdgpu-pro-vulkan () {
