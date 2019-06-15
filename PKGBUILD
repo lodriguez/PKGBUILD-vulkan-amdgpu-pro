@@ -1,7 +1,9 @@
+# Maintainer: lod <aur@cyber-anlage.de> 
 pkgname=vulkan-amdgpu-pro
-pkgver=19.10_785425
+pkgver=19.20_812932
 pkgver_=${pkgver//_/-}-ubuntu-18.04
 pkgrel=1
+pkgdesc='AMDGPU PRO Driver for Vulkan®'
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
@@ -13,7 +15,7 @@ makedepends=('wget')
 DLAGENTS='https::/usr/bin/wget --referer https://support.amd.com/en-us/kb-articles/Pages/AMDGPU-PRO-Install.aspx -N %u'
 
 source=(https://drivers.amd.com/drivers/linux/amdgpu-pro-${pkgver_}.tar.xz)
-sha256sums=('a0bd71417d0c0ddd404be8c86653135c4e0190a54bb8dc62eef231d5275f37bd')
+sha256sums=('c5376760ce15454c5ef5cef86571f3806114403d91b8a210629d2e927c98d852')
 
 build() {
   ar -x ${srcdir}/amdgpu-pro-${pkgver_}/vulkan-amdgpu-pro_${pkgver//_/-}_amd64.deb
